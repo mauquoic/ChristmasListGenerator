@@ -18,14 +18,14 @@ import javax.inject.Inject
 
 @Route("presents")
 open class EditPresentView @Inject constructor(private val christmasListBC: ChristmasListBC,
-                                               vararg children: Component?) :
+                                                   vararg children: Component?) :
         VerticalLayout(*children),
         HasUrlParameter<String> {
 
     var present: Present? = null
 
     init {
-        add(
+        this.add(
                 H1("Presents")
         )
     }

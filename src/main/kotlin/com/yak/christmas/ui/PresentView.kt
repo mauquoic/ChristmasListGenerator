@@ -30,7 +30,7 @@ open class PresentView @Inject constructor(private val christmasListBC: Christma
     var person: Person? = null
 
     init {
-        add(
+        this.add(
                 H1("Presents")
         )
     }
@@ -86,7 +86,7 @@ open class PresentView @Inject constructor(private val christmasListBC: Christma
                 ViewUtil.logoutButton())
     }
 
-    private fun getPresentGrid(presents : List<Present>): Grid<Present> {
+    private fun getPresentGrid(presents: List<Present>): Grid<Present> {
         var presentGrid: Grid<Present> = Grid<Present>(Present::class.java)
         presentGrid.setItems(presents)
         presentGrid.setColumns("presentName", "link", "description")

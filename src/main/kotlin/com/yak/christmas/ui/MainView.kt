@@ -15,11 +15,11 @@ import javax.inject.Inject
 
 
 @Route("welcome")
-class MainView @Inject constructor(private val christmasListBC: ChristmasListBC,
-                                   vararg children: Component?) : VerticalLayout(*children) {
+open class MainView @Inject constructor(private val christmasListBC: ChristmasListBC,
+                                        vararg children: Component?) : VerticalLayout(*children) {
 
     init {
-        add(
+        this.add(
                 H1("Welcome to the fantastic Generator by Yakman!")
         )
         christmasListBC.families[0].members[0].giftPersonName?.let { welcomePersonScreen() } ?: run { listScreen() }
