@@ -87,8 +87,8 @@ open class PresentView @Inject constructor(private val christmasListBC: Christma
             add(
                     presentsToBuyButton,
                     H2("My presents"),
-                    presentGrid,
                     presentForm(),
+                    presentGrid,
                     ViewUtil.logoutButton())
         }
     }

@@ -31,6 +31,6 @@ class Person(val name: String, val id: String, var hasAlreadyDrawn: Boolean = fa
     }
 
     fun printGift(): String {
-        return "${this.name} koopt voor ${giftPerson!!.name}! \n"
+        return "${this.name} koopt voor ${giftPerson!!.name}!"
     }
 }

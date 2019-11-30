@@ -51,15 +51,19 @@ class FamilyUtil {
                         Person("Bipo", "bip483")
                     )
                 )
+//
+//            val mammie =
+//                Family(
+//                    "mammie", listOf(
+//                        Person("Mammie", "mammie")
+//                    )
+//                )
 
-            val mammie =
-                Family(
-                    "mammie", listOf(
-                        Person("Mammie", "mammie")
-                    )
-                )
-
-            return listOf(bertrange, mammie, lint, kontichBruno, kontichIve)
+            return listOf(bertrange,
+//                    mammie,
+                    lint,
+                    kontichBruno,
+                    kontichIve)
         }
     }
 }
