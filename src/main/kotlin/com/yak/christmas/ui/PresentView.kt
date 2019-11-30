@@ -98,12 +98,12 @@ open class PresentView @Inject constructor(private val christmasListBC: Christma
 
         val titleField = TextField()
         titleField.label = "Title"
-        titleField.placeholder = "Present for Cédric"
+        titleField.placeholder = "e.g. candles"
         titleField.minLength = 1
         titleField.isRequired = true
         val linkField = TextField()
         linkField.label = "Link"
-        linkField.placeholder = "http://mauquoi.com"
+        linkField.placeholder = "e.g. http://mauquoi.com/welcome"
         val descriptionField = TextField()
         descriptionField.label = "Description"
         descriptionField.placeholder = "More info"

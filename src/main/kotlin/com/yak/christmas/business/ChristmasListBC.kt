@@ -45,7 +45,9 @@ class ChristmasListBC {
     }
 
     fun findPersonWhoWantsPresentWithId(id: Int): Person {
-        return families.flatMap { it.members }.filter { it.wantedPresents.map { it.id == id }.isNotEmpty() }.first()
+        return families.flatMap { it.members }.first {
+            it.wantedPresents.any { present -> present.id == id }
+        }
     }
 
     fun deletePresentById(presentId: Int) {
