@@ -60,30 +60,47 @@ open class PresentView @Inject constructor(private val christmasListBC: Christma
     }
 
     private fun presentPage() {
-        val presentGrid: Grid<Present> = getPresentGrid(person!!.wantedPresents)
+        if (!person!!.hasAlreadyDrawn) {
+            add(H2("Draw your assigned person"),
+                    drawPersonButton(),
+                    ViewUtil.logoutButton())
+        } else {
+            val presentGrid: Grid<Present> = getPresentGrid(person!!.wantedPresents)
 
-        val presentsToBuyButton = Button("See presents for ${person!!.giftPersonName}")
-        presentsToBuyButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY)
-        presentsToBuyButton.addClickListener {
-            UI.getCurrent().page.setLocation("persons/${person!!.id}/presents-to-buy")
+            val presentsToBuyButton = Button("See presents for ${person!!.giftPersonName}")
+            presentsToBuyButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY)
+            presentsToBuyButton.addClickListener {
+                UI.getCurrent().page.setLocation("persons/${person!!.id}/presents-to-buy")
+            }
+
+            val titleField = TextField()
+            titleField.label = "Title"
+            val linkField = TextField()
+            linkField.label = "Link"
+            val descriptionField = TextField()
+            descriptionField.label = "Description"
+
+            presentGrid.addItemClickListener { event ->
+                UI.getCurrent().page.setLocation("presents/${event.item.id}")
+            }
+
+            add(
+                    presentsToBuyButton,
+                    H2("My presents"),
+                    presentGrid,
+                    presentForm(),
+                    ViewUtil.logoutButton())
         }
+    }
 
-        val titleField = TextField()
-        titleField.label = "Title"
-        val linkField = TextField()
-        linkField.label = "Link"
-        val descriptionField = TextField()
-        descriptionField.label = "Description"
-
-        presentGrid.addItemClickListener { event ->
-            UI.getCurrent().page.setLocation("presents/${event.item.id}")
+    private fun drawPersonButton(): Button {
+        val drawPersonButton = Button("Draw")
+        drawPersonButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY)
+        drawPersonButton.addClickListener {
+            person!!.hasAlreadyDrawn = true
+            UI.getCurrent().page.reload()
         }
-
-        add(H2("My presents"),
-                presentGrid,
-                presentForm(),
-                presentsToBuyButton,
-                ViewUtil.logoutButton())
+        return drawPersonButton
     }
 
     private fun getPresentGrid(presents: List<Present>): Grid<Present> {

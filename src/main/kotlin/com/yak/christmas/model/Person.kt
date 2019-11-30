@@ -3,7 +3,7 @@ package com.yak.christmas.model
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonInclude
 
-class Person(val name: String, val id: String) {
+class Person(val name: String, val id: String, var hasAlreadyDrawn: Boolean = false) {
     @JsonIgnore
     var giftPerson: Person? = null
 

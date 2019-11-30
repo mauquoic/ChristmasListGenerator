@@ -12,7 +12,7 @@ class ChristmasListBC {
     var presentCounter: Int = 1
 
     fun findPersonById(personId: String): Person? {
-        return families.flatMap { it.members }.find { it.id == personId }
+        return families.flatMap { it.members }.find { it.id == personId.toLowerCase() }
     }
 
     fun determineLists(): List<Family> {
